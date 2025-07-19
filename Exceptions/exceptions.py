@@ -2,6 +2,8 @@ import math
 
 num_list = [10, -5, 1.2, "apple"]
 
+print("This is the list we are testing:", num_list, "\n")
+
 for num in num_list:
     try:
         num_factorial = math.factorial(num)
@@ -12,4 +14,4 @@ for num in num_list:
     else:
         print("The factorial of", num, "is", num_factorial)
     finally:
-        print("We are done now.")
+        print("We are done now.\n")
