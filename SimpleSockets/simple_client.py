@@ -20,6 +20,3 @@ stream_socket.sendall(message.encode())
 # Response
 data = stream_socket.recv(10)
 print(message)
-
-#stream_socket.close()
-
