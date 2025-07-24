@@ -1,0 +1,36 @@
+Objects in Beautiful Soup
+-------------------------
+- In BeautifulSoup, an "object" typically refers to an element (or a part of the HTML/XML document) that BeautifulSoup parses and lets you work with as a Python object
+- When you load an HTML document using BeautifulSoup, the entire page is turned into a tree of Python objects 
+- Each tag, attribute, and text element becomes an object that you can navigate and manipulate
+
+Common Object Types
+-------------------
+- Beautiful Soup Object
+	- The main object created when you parse a document
+	- It represents the entire document as a nested data structure
+	Ex.
+		html = "<html><body><p>Hello!</p></body></html>"
+		soup = BeautifulSoup(html, "html.parser")  # This is the BeautifulSoup object
+
+- Tag Object
+	- Represents an HTML or XML tag in the document.
+	- You can access tag names, attributes, children, text, etc.
+	Ex.
+		p_tag = soup.p       # <p>Hello!</p> — this is a Tag object
+		print(p_tag.name)    # 'p'
+		print(p_tag.text)    # 'Hello!'
+
+- NavigableString Object
+	- Represents the text within a tag (not a tag itself)
+	Ex.
+		text = p_tag.string   # 'Hello!' — this is a NavigableString
+		print(type(text))     # <class 'bs4.element.NavigableString'>
+
+- Comment, CData, etc.
+	- Subclasses of NavigableString used for specific parts of HTML/XML
+	Ex.
+		html = "<p>Hi<!--This is a comment--></p>"
+		soup = BeautifulSoup(html, "html.parser")
+		comment = soup.find(string=lambda text: isinstance(text, Comment))
+		print(comment)  # 'This is a comment'
